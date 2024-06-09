@@ -5,6 +5,9 @@ execute as @a[team=Runner] at @s store result storage minecraft:position Item.co
 data modify block 0 200 0 Items append from storage minecraft:position Item
 execute as @a[nbt={SelectedItem: {id: "minecraft:compass"}}] run item replace entity @s weapon.mainhand from block 0 200 0 container.0
 
-execute as @a if score @s deaths matches 1 run execute as @s if score StarterKitsEnabled settings matches 1 run function custom_manhunt:get_starter_kit
+execute as @a[team=Hunter] if score @s deaths matches 1 run execute as @s if score StarterKitsEnabled settings matches 1 run function custom_manhunt:get_starter_kit
+
+# Not robust to multiple Runners
+execute positioned as @a[team=Runners] run execute as @a[team=Hunters, distance=500..] run give @s minecraft:speed 10 0 true
 
 schedule function custom_manhunt:loop 10t
