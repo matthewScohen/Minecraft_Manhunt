@@ -3,6 +3,7 @@ team add Hunter
 team modify Hunter color red
 team modify Runner color blue
 scoreboard objectives add setting dummy "Setting"
+scoreboard objectives setdisplay sidebar setting
 scoreboard players set StarterKitsEnabled setting 0
 scoreboard players set CatchUp setting 0
 
