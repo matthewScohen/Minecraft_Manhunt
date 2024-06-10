@@ -1,1 +1,0 @@
-scoreboard players set StarterKitsEnabled settings 1
