@@ -12,7 +12,7 @@ scoreboard players set StarterKitsEnabled setting 0
 scoreboard players set CatchUp setting 0
 
 scoreboard objectives add deaths deathCount "Deaths"
-scoreboard players reset @a deaths
+scoreboard players set @a deaths 0
 
 scoreboard objectives add variable dummy "Variable"
 scoreboard players set StarterKitLevel variable 0
