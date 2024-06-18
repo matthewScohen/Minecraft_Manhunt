@@ -21,6 +21,8 @@ scoreboard players set @a kills 0
 scoreboard objectives add variable dummy "Variable"
 scoreboard players set StarterKitLevel variable 0
 
+advancement revoke @a everything
+
 setworldspawn 0 50 0
 data modify storage position Item set value {Slot:0b,components:{"minecraft:lodestone_tracker":{target:{dimension:"minecraft:overworld",pos:[I;0,0,0]},tracked:0b}},count:1,id:"minecraft:compass"}
 setblock 0 0 0 minecraft:chest
