@@ -12,10 +12,16 @@ execute as @a[team=Hunter] if score @s deaths matches 1.. run scoreboard players
 # Give Speed 1 to Hunters over 500 blocks from any Runner if CatchUp is enabled
 execute if score CatchUp setting matches 1 as @a[team=Hunter] at @s if entity @p[team=Runner, distance=500..] unless entity @p[team=Runner, distance=..500] run effect give @s minecraft:speed 1 0 true
 
-# If a runner dies, put them in spectator
-execute as @a[team=Runner] if score @s deaths matches 1.. run gamemode spectator
+# If a runner dies and InheritRunner is off, put them in spectator
+execute if score InheritRunner setting matches 0 as @a[team=Runner] if score @s deaths matches 1.. run gamemode spectator
+
+# If a runner dies and InheritRunner is on, change teams and reset hunter kills score
+execute if score InheritRunner setting matches 1 as @a[team=Runner] if score @s deaths matches 1.. run function custom_manhunt:swap_runner
+
+# Reset kills score
+scoreboard players set @a kills 0
 
 schedule function custom_manhunt:loop 10t append
 
-# If all runners die, end game
-execute unless entity @a[team=Runner, scores={deaths=0}] run function custom_manhunt:end
+# If all runners die and InheritRunner is off, hunters win
+execute if score InheritRunner setting matches 0 unless entity @a[team=Runner, scores={deaths=0}] run function custom_manhunt:win_hunter

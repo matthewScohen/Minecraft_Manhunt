@@ -10,9 +10,13 @@ scoreboard objectives add setting dummy "Setting"
 scoreboard objectives setdisplay sidebar setting
 scoreboard players set StarterKitsEnabled setting 0
 scoreboard players set CatchUp setting 0
+scoreboard players set InheritRunner setting 0
 
 scoreboard objectives add deaths deathCount "Deaths"
 scoreboard players set @a deaths 0
+
+scoreboard objectives add kills playerKillCount "Kills"
+scoreboard players set @a kills 0
 
 scoreboard objectives add variable dummy "Variable"
 scoreboard players set StarterKitLevel variable 0
